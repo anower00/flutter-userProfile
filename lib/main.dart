@@ -4,7 +4,15 @@ void main() =>runApp(MaterialApp(
   home: DateTime()
 ));
 
-class DateTime extends StatelessWidget {
+class DateTime extends StatefulWidget {
+  @override
+  _DateTimeState createState() => _DateTimeState();
+}
+
+class _DateTimeState extends State<DateTime> {
+
+  int userLevel = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,6 +22,15 @@ class DateTime extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            userLevel += 1;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
@@ -27,7 +44,7 @@ class DateTime extends StatelessWidget {
               ),
             ),
             Divider(
-              height: 90.0,
+              height: 50.0,
               color: Colors.white70,
             ),
             Text(
@@ -58,6 +75,24 @@ class DateTime extends StatelessWidget {
             SizedBox(height: 10.0),
             Text(
               'Soulmaid, Dhaka',
+              style: TextStyle(
+                color: Colors.amberAccent,
+                letterSpacing: 1.0,
+                fontSize: 28.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 30.0),
+            Text(
+              'LEVEL',
+              style: TextStyle(
+                color: Colors.grey,
+                letterSpacing: 2.0,
+              ),
+            ),
+            SizedBox(height: 10.0),
+            Text(
+              '$userLevel',
               style: TextStyle(
                 color: Colors.amberAccent,
                 letterSpacing: 1.0,
